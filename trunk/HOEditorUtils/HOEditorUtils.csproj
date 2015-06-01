@@ -58,6 +58,8 @@
   <PropertyGroup>
     <PostBuildEvent>set DestinationDir=bin.Global\HOUnityEditor\Editor
 set FullDestinationDir=$(SolutionDir)..\%25DestinationDir%25
+set DestinationDirNoMeta=bin.Global_no_meta\HOUnityEditor\Editor
+set FullDestinationDirNoMeta=$(SolutionDir)..\%25DestinationDirNoMeta%25
 
 echo Deleting TMPs...
 DEL $(TargetDir)\*.tmp
@@ -69,7 +71,11 @@ DEL $(TargetName).pdb
 
 echo Exporting Assembly to %25FullDestinationDir%25
 echo Copying files to Destination...
-echo f | xcopy "$(ProjectDir)bin" %25FullDestinationDir%25 /Y /I /E</PostBuildEvent>
+echo f | xcopy "$(ProjectDir)bin" %25FullDestinationDir%25 /Y /I /E
+
+echo Exporting Assembly to %25FullDestinationDirNoMeta%25
+echo Copying files to Destination...
+echo f | xcopy "$(ProjectDir)bin" %25FullDestinationDirNoMeta%25 /Y /I /E</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
